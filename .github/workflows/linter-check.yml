@@ -4,10 +4,9 @@ jobs:
   my-job:
     runs-on: macos-11
     steps:
+      - uses: actions/checkout@v2
       - name: npm install
         run: |
             make install
-        env:
-          CI: true
       - name: Run linter
         run: make lint
