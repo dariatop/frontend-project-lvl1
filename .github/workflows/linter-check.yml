@@ -1,0 +1,8 @@
+name: linter-check
+on: push
+jobs:
+  my-job:
+    runs-on: macos-11
+    steps:
+      - name: my-step
+        run: make lint
