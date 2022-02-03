@@ -1,14 +1,22 @@
-// Делаем генератор случайных чисел
-function getRandomInRange(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+import userGreeting from '../src/cli.js';
+import { getRandomInRange, askQuestion } from '../src/index.js';
 
-// Функция проверки числа на четность
-const findEven = () => {
-  // Выдаем пользователю случайное число
+const userName = userGreeting();
+console.log(`Hello, ${userName}!`);
+
+const findEven = (number) => (number % 2 === 0 ? 'yes' : 'no');
+
+let correctness = true;
+for (let i = 0; i < 3; i += 1) {
   const randomRange = getRandomInRange(0, 100);
-  console.log(`Question: ${randomRange}`);
-  return randomRange % 2 === 0 ? 'yes' : 'no';
-};
-
+  const expected = findEven(randomRange);
+  const actual = askQuestion(`Answer "yes" if the number is even, otherwise answer "no".\nQuestion: ${randomRange}`);
+  if (expected !== actual) {
+    correctness = false;
+    console.log(`'${actual}' is wrong answer ;(. Correct answer was '${expected}'.\nLet's try again, ${userName}!`);
+    break;
+  }
+  console.log('Correct!');
+}
+if (correctness) console.log(`Congratulations, ${userName}!`);
 export default findEven;

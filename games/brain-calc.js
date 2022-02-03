@@ -1,5 +1,5 @@
-// Делаем генератор случайных чисел
-const randomInt = () => Math.floor(Math.random() * 100);
+import userGreeting from '../src/cli.js';
+import { getRandomInRange, askQuestion } from '../src/index.js';
 
 // Делаем генератор математических операций
 const getRandomOperation = () => {
@@ -30,13 +30,21 @@ const toOperation = (randomSign, randomNum1, randomNum2) => {
   return String(result);
 };
 
-const findExpression = () => {
-  // Выдаем пользователю случайное математическое выражение
-  const randomSign = getRandomOperation();
-  const randomNum1 = randomInt();
-  const randomNum2 = randomInt();
-  console.log(`Question: ${randomNum1} ${randomSign} ${randomNum2}`);
-  return toOperation(randomSign, randomNum1, randomNum2);
-};
+const userName = userGreeting();
+console.log(`Hello, ${userName}!`);
 
-export default findExpression;
+let correctness = true;
+for (let i = 0; i < 3; i += 1) {
+  const randomSign = getRandomOperation();
+  const randomNum1 = getRandomInRange(0, 100);
+  const randomNum2 = getRandomInRange(0, 100);
+  const expected = toOperation(randomSign, randomNum1, randomNum2);
+  const actual = askQuestion(`What is the result of the expression?\nQuestion: ${randomNum1} ${randomSign} ${randomNum2}`);
+  if (expected !== actual) {
+    correctness = false;
+    console.log(`'${actual}' is wrong answer ;(. Correct answer was '${expected}'.\nLet's try again, ${userName}!`);
+    break;
+  }
+  console.log('Correct!');
+}
+if (correctness) console.log(`Congratulations, ${userName}!`);
