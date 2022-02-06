@@ -31,7 +31,6 @@ const toOperation = (randomSign, randomNum1, randomNum2) => {
 };
 
 const userName = userGreeting();
-console.log(`Hello, ${userName}!`);
 
 let correctness = true;
 for (let i = 0; i < 3; i += 1) {

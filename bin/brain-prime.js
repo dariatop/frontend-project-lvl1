@@ -2,7 +2,6 @@ import userGreeting from '../src/cli.js';
 import { getRandomInRange, askQuestion } from '../src/index.js';
 
 const userName = userGreeting();
-console.log(`Hello, ${userName}!`);
 
 const isPrime = (number) => {
   for (let i = 2; i <= number / 2; i += 1) {

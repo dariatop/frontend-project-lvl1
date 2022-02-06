@@ -2,7 +2,6 @@ import userGreeting from '../src/cli.js';
 import { getRandomInRange, askQuestion } from '../src/index.js';
 
 const userName = userGreeting();
-console.log(`Hello, ${userName}!`);
 
 const findEven = (number) => (number % 2 === 0 ? 'yes' : 'no');
 

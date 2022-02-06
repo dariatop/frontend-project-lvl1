@@ -2,7 +2,6 @@ import userGreeting from '../src/cli.js';
 import { getRandomInRange, askQuestion } from '../src/index.js';
 
 const userName = userGreeting();
-console.log(`Hello, ${userName}!`);
 
 let correctness = true;
 for (let a = 0; a < 3; a += 1) {
