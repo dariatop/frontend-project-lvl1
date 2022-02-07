@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import userGreeting from '../src/cli.js';
 import { getRandomInRange, askQuestion } from '../src/index.js';
 
