@@ -9,7 +9,7 @@ const engine = (gameDiscription, roundFunction) => {
   for (let i = 0; i < roundsCount; i += 1) {
     console.log(gameDiscription);
     const response = roundFunction();
-    console.log(response[0]);
+    console.log(`Question: ${response[0]}`);
     const expected = response[1];
     const actual = readlineSync.question('Your answer: ');
     if (expected !== actual) {
