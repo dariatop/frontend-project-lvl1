@@ -1,4 +1,4 @@
-import { getRandomInRange } from '../helpers.js';
+import getRandomInRange from '../helpers.js';
 import engine from '../index.js';
 
 const findMissingNumber = () => {
