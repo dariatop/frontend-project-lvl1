@@ -1,4 +1,3 @@
-// Делаем общий генератор случайных чисел
 function getRandomInRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }

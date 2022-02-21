@@ -1,6 +1,8 @@
 import getRandomInRange from '../helpers.js';
 import engine from '../index.js';
 
+const discription = 'Answer "yes" if the number is prime, otherwise answer "no".';
+
 const isPrime = () => {
   const number = getRandomInRange(0, 100);
   for (let i = 2; i <= number / 2; i += 1) {
@@ -10,5 +12,4 @@ const isPrime = () => {
   }
   return [String(number), 'yes'];
 };
-engine('Answer "yes" if the number is prime, otherwise answer "no".', isPrime);
-export default isPrime;
+export default () => { engine(discription, isPrime); };

@@ -1,6 +1,8 @@
 import getRandomInRange from '../helpers.js';
 import engine from '../index.js';
 
+const discription = 'What number is missing in the progression?';
+
 const findMissingNumber = () => {
   const x = [];
   const start = getRandomInRange(1, 99);
@@ -14,5 +16,4 @@ const findMissingNumber = () => {
   x[index] = '..';
   return [x.join(' '), String(expected)];
 };
-engine('What number is missing in the progression?', findMissingNumber);
-export default findMissingNumber;
+export default () => { engine(discription, findMissingNumber); };

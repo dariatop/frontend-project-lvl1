@@ -1,6 +1,8 @@
 import getRandomInRange from '../helpers.js';
 import engine from '../index.js';
 
+const discription = 'Find the greatest common divisor of given numbers.';
+
 const findGCD = () => {
   const firstNumber = getRandomInRange(0, 100);
   const secondNumber = getRandomInRange(0, 100);
@@ -14,5 +16,4 @@ const findGCD = () => {
   }
   return [`${firstNumber} ${secondNumber}`, String(1)];
 };
-engine('Find the greatest common divisor of given numbers.', findGCD);
-export default findGCD;
+export default () => { engine(discription, findGCD); };
