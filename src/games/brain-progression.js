@@ -3,17 +3,24 @@ import engine from '../index.js';
 
 const discription = 'What number is missing in the progression?';
 
-const findMissingNumber = () => {
-  const x = [];
-  const start = getRandomInRange(1, 99);
-  const diff = getRandomInRange(1, 10);
-  for (let i = start; i <= 1000; i += diff) {
-    x.push(i);
+const generateProgression = (firstNumber, step, length) => {
+  const progression = [];
+  for (let i = 0; i < length; i += 1) {
+    progression.push(firstNumber + i * step);
   }
-  x.length = 10;
-  const index = getRandomInRange(0, 9);
-  const expected = x[index];
-  x[index] = '..';
-  return [x.join(' '), String(expected)];
+  return progression;
 };
-export default () => { engine(discription, findMissingNumber); };
+
+const generateRound = () => {
+  const firstNumber = getRandomInRange(1, 99);
+  const step = getRandomInRange(5, 15);
+  const length = getRandomInRange(5, 10);
+  const progression = generateProgression(firstNumber, step, length);
+  const randomIndex = getRandomInRange(0, length - 1);
+  const answer = String(progression[randomIndex]);
+  progression[randomIndex] = '..';
+  const question = progression.join(' ');
+  return [question, answer];
+};
+
+export default () => engine(discription, generateRound);

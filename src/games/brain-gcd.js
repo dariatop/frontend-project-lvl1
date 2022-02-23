@@ -3,17 +3,16 @@ import engine from '../index.js';
 
 const discription = 'Find the greatest common divisor of given numbers.';
 
-const findGCD = () => {
-  const firstNumber = getRandomInRange(0, 100);
-  const secondNumber = getRandomInRange(0, 100);
-  if (firstNumber === 0 && secondNumber !== 0) return [`${firstNumber} ${secondNumber}`, String(secondNumber)];
-  if (secondNumber === 0 && firstNumber !== 0) return [`${firstNumber} ${secondNumber}`, String(firstNumber)];
-  if (firstNumber % secondNumber === 0) return [`${firstNumber} ${secondNumber}`, String(secondNumber)];
-  if (secondNumber % firstNumber === 0) return [`${firstNumber} ${secondNumber}`, String(firstNumber)];
-  const x = Math.trunc(Math.min(firstNumber, secondNumber) / 2);
-  for (let i = x; i > 0; i -= 1) {
-    if (firstNumber % i === 0 && secondNumber % i === 0) return [`${firstNumber} ${secondNumber}`, String(i)];
-  }
-  return [`${firstNumber} ${secondNumber}`, String(1)];
+const getGcd = (num1, num2) => {
+  if (num1 === 0) { return num2; }
+  return getGcd(num2 % num1, num1);
 };
-export default () => { engine(discription, findGCD); };
+
+const generateRound = () => {
+  const num1 = getRandomInRange(1, 100);
+  const num2 = getRandomInRange(1, 100);
+  const answer = String(getGcd(num1, num2));
+  const question = `${num1} ${num2}`;
+  return [question, answer];
+};
+export default () => engine(discription, generateRound);

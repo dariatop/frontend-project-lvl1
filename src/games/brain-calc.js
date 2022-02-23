@@ -23,4 +23,4 @@ const generateRound = () => {
   return [question, answer];
 };
 
-export default () => { engine(discription, generateRound); };
+export default () => engine(discription, generateRound);
